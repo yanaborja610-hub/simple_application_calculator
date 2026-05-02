@@ -19,9 +19,30 @@ class AddedFeature(BasicCalculator):
         if expression[0] in "+-*/":
             expression = str(self.last_result) + expression
 
-        result = eval(expression)
-        self.show_history(expression, result)
+        results = expression.split()
+        if len(results) == 3:
+            num_1, operator, num_2 = float(results[0]), results[1], float(results[2])
 
+            if operator == "+":
+                result = self.add_numbers(num_1, num_2)
+
+            elif operator == "-":
+                result = self.subtract_numbers(num_1, num_2)
+
+            elif operator == "*":
+                result = self.multiply_numbers(num_1, num_2)
+
+            elif operator == "/":
+                result = self.divide_numbers(num_1, num_2)
+
+            else:
+                print("Invalid operator")
+                return None
+        else:
+            print("Invalid format. Use number 1 + number 2")
+            return None
+
+        self.history_storage(expression, result)
         return result
 
     def undo(self):

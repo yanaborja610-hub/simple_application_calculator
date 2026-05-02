@@ -1,3 +1,5 @@
+from child_class_simple_calculator import BasicCalculator
+
 class AddedFeature(BasicCalculator):
     def __init__(self, filename ="calculator_history.txt"):
         super().__init__()

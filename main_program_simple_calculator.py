@@ -28,3 +28,6 @@ def main_calculator():
 
             except Exception as error:
                 print("Error: ", error)
+
+if __name__ == "__main__":
+    main_calculator()

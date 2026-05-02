@@ -8,3 +8,9 @@ class BasicCalculator(CalculatorParentClass):
     def multiply_numbers(self, a, b):
         return a * b
 
+    def divide_numbers(self, a, b):
+        try:
+            return a / b
+        except ZeroDivisionError:
+            return "Cannot be divided by zero"
+

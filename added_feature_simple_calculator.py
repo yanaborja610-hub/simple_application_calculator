@@ -13,3 +13,12 @@ class AddedFeature(BasicCalculator):
         with open(self.filename, "a") as file:
             file.write(f"{expression} = {result}\n")
 
+    def expression_chain(self, expression):
+        expression = expression.strip()
+        if expression[0] in "+-*/":
+            expression = str(self.last_result) + expression
+
+        result = eval(expression)
+        self.show_history(expression, result)
+
+        return result

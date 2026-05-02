@@ -1,5 +1,5 @@
 class AddedFeature(BasicCalculator):
-    def __init__(self, filename ="calc_history.txt"):
+    def __init__(self, filename ="calculator_history.txt"):
         self.filename = filename
         self.history = []
         self.last_result = 0

@@ -19,3 +19,12 @@ def main_calculator():
 
         elif user_input.lower() == "undo":
             calculator.undo()
+
+        else:
+            try:
+                results = calculator.expression_chain(user_input)
+                calculator.history_storage(user_input, results)
+                print("Result: ", results)
+
+            except Exception as error:
+                print("Error: ", error)

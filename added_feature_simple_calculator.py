@@ -17,35 +17,17 @@ class AddedFeature(BasicCalculator):
             file.write(f"{expression} = {result}\n")
 
     def expression_chain(self, expression):
-        expression = expression.strip()
-        if expression[0] in "+-*/":
-            expression = str(self.last_result) + expression
+            expression = expression.strip()
 
-        results = expression.split()
-        if len(results) == 3:
-            num_1, operator, num_2 = float(results[0]), results[1], float(results[2])
+            if expression and expression[0] in "+-*/":
+                expression = str(self.last_result) + expression
 
-            if operator == "+":
-                result = self.add_numbers(num_1, num_2)
+            result = eval(expression)
 
-            elif operator == "-":
-                result = self.subtract_numbers(num_1, num_2)
+            self.last_result = result
+            self.history_storage(expression, result)
 
-            elif operator == "*":
-                result = self.multiply_numbers(num_1, num_2)
-
-            elif operator == "/":
-                result = self.divide_numbers(num_1, num_2)
-
-            else:
-                print("Invalid operator")
-                return None
-        else:
-            print("Invalid format. Use number 1 + number 2")
-            return None
-
-        self.history_storage(expression, result)
-        return result
+            return result
 
     def undo(self):
         if not self.history:

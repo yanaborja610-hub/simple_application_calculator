@@ -10,3 +10,6 @@ class AddedFeature(BasicCalculator):
         self.history.append(entry)
         self.last_result = result
 
+        with open(self.filename, "a") as file:
+            file.write(f"{expression} = {result}\n")
+

@@ -5,3 +5,6 @@ class BasicCalculator(CalculatorParentClass):
     def subtract_numbers(self, a, b):
         return a - b
 
+    def multiply_numbers(self, a, b):
+        return a * b
+

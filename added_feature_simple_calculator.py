@@ -4,7 +4,7 @@ class AddedFeature(BasicCalculator):
         self.history = []
         self.last_result = 0
 
-    def show_history(self, expression, result):
+    def history_storage(self, expression, result):
         entry = {"expression": expression, "result": result}
 
         self.history.append(entry)
@@ -36,3 +36,12 @@ class AddedFeature(BasicCalculator):
         with open(self.filename, "w") as file:
             for item in self.history:
                 file.write(f"{item['expression']} = {item['result']}\n")
+
+    def show_history(self):
+        if not self.history:
+            print("No history yet.")
+            return
+
+        print("\n History:")
+        for i, item in enumerate(self.history, 1):
+            print(f"{i}. {item['expression']} = {item['result']}")

@@ -22,3 +22,13 @@ class AddedFeature(BasicCalculator):
         self.show_history(expression, result)
 
         return result
+
+    def undo(self):
+        if not self.history:
+            print("Nothing to undo")
+            return
+
+        removed = self.history.pop()
+        print(f"Undone: {removed['expression']} = {removed['result']}")
+
+        self.last_result = self.history[-1]["result"] if self.history else 0
